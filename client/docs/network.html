@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module network</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">network</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/quack/reflex/client/network.py">/home/quack/reflex/client/network.py</a></td></tr></table>
+    <p><span class="code">Network&nbsp;Module<br>
+==============<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;handles&nbsp;HTTP&nbsp;communication&nbsp;with&nbsp;the&nbsp;RefleX&nbsp;server.<br>
+It&nbsp;provides&nbsp;a&nbsp;wrapper&nbsp;around&nbsp;urllib&nbsp;for&nbsp;sending&nbsp;requests&nbsp;and&nbsp;handling&nbsp;responses,<br>
+including&nbsp;error&nbsp;handling&nbsp;and&nbsp;specific&nbsp;behaviors&nbsp;such&nbsp;as&nbsp;'self-destruct'&nbsp;on&nbsp;418.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="json.html">json</a><br>
+</td><td class="multicolumn"><a href="urllib.html">urllib</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-http_request"><strong>http_request</strong></a>(endpoint, data=None)</dt><dd><span class="code">Sends&nbsp;an&nbsp;HTTP&nbsp;request&nbsp;to&nbsp;the&nbsp;specified&nbsp;server&nbsp;endpoint.<br>
+&nbsp;<br>
+If&nbsp;`data`&nbsp;is&nbsp;provided,&nbsp;a&nbsp;POST&nbsp;request&nbsp;is&nbsp;made&nbsp;with&nbsp;JSON&nbsp;payload.<br>
+Otherwise,&nbsp;a&nbsp;GET&nbsp;request&nbsp;is&nbsp;made.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;endpoint&nbsp;(str):&nbsp;The&nbsp;API&nbsp;endpoint&nbsp;path&nbsp;(e.g.,&nbsp;'/ping').<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;(dict,&nbsp;optional):&nbsp;The&nbsp;dictionary&nbsp;to&nbsp;be&nbsp;sent&nbsp;as&nbsp;a&nbsp;JSON&nbsp;payload.&nbsp;Defaults&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;str:&nbsp;The&nbsp;response&nbsp;body&nbsp;as&nbsp;a&nbsp;UTF-8&nbsp;decoded&nbsp;string.<br>
+&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;urllib.error.HTTPError:&nbsp;If&nbsp;the&nbsp;server&nbsp;returns&nbsp;an&nbsp;HTTP&nbsp;error&nbsp;code.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Exception:&nbsp;For&nbsp;other&nbsp;connection&nbsp;errors.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>SERVER_URL</strong> = 'http://localhost:3000'</td></tr></table>
+</body></html>

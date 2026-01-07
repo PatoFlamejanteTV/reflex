@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module client</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">client</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/quack/reflex/client/client.py">/home/quack/reflex/client/client.py</a></td></tr></table>
+    <p><span class="code">RefleX&nbsp;Client&nbsp;Module<br>
+====================<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;serves&nbsp;as&nbsp;the&nbsp;entry&nbsp;point&nbsp;for&nbsp;the&nbsp;RefleX&nbsp;client&nbsp;application.<br>
+It&nbsp;handles&nbsp;the&nbsp;main&nbsp;execution&nbsp;loop,&nbsp;including&nbsp;communicating&nbsp;with&nbsp;the&nbsp;server,<br>
+executing&nbsp;payloads,&nbsp;and&nbsp;reporting&nbsp;results&nbsp;or&nbsp;errors&nbsp;back&nbsp;to&nbsp;the&nbsp;server.<br>
+&nbsp;<br>
+The&nbsp;client&nbsp;operates&nbsp;by:<br>
+1.&nbsp;Pinging&nbsp;the&nbsp;server&nbsp;to&nbsp;ensure&nbsp;connectivity.<br>
+2.&nbsp;Requesting&nbsp;an&nbsp;initial&nbsp;code&nbsp;payload&nbsp;based&nbsp;on&nbsp;a&nbsp;master&nbsp;prompt.<br>
+3.&nbsp;Executing&nbsp;the&nbsp;payload&nbsp;in&nbsp;a&nbsp;loop.<br>
+4.&nbsp;If&nbsp;execution&nbsp;fails,&nbsp;reporting&nbsp;the&nbsp;error&nbsp;to&nbsp;the&nbsp;server&nbsp;and&nbsp;requesting&nbsp;a&nbsp;fix.<br>
+5.&nbsp;Retrying&nbsp;with&nbsp;the&nbsp;fixed&nbsp;code&nbsp;until&nbsp;success&nbsp;or&nbsp;maximum&nbsp;retries&nbsp;are&nbsp;reached.<br>
+&nbsp;<br>
+Dependencies:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;config:&nbsp;Configuration&nbsp;settings.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;logger:&nbsp;Logging&nbsp;utility.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;network:&nbsp;Network&nbsp;communication&nbsp;functions.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;execution:&nbsp;Code&nbsp;execution&nbsp;logic.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="json.html">json</a><br>
+</td><td class="multicolumn"><a href="sys.html">sys</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-main"><strong>main</strong></a>()</dt><dd><span class="code">Main&nbsp;entry&nbsp;point&nbsp;for&nbsp;the&nbsp;RefleX&nbsp;client.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;coordinates&nbsp;the&nbsp;lifecycle&nbsp;of&nbsp;the&nbsp;client:<br>
+-&nbsp;Connects&nbsp;to&nbsp;the&nbsp;server.<br>
+-&nbsp;Fetches&nbsp;the&nbsp;generated&nbsp;code.<br>
+-&nbsp;Executes&nbsp;the&nbsp;code.<br>
+-&nbsp;Handles&nbsp;errors&nbsp;and&nbsp;retries&nbsp;by&nbsp;requesting&nbsp;fixes&nbsp;from&nbsp;the&nbsp;server.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>MASTER_PROMPT</strong> = 'CPU Spike/Stress tester, short test that only lasts for 5 seconds'<br>
+<strong>MAX_RETRIES</strong> = 4<br>
+<strong>SERVER_URL</strong> = 'http://localhost:3000'</td></tr></table>
+</body></html>
