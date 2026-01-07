@@ -1,0 +1,12 @@
+{
+  "name": "reflex-server",
+  "version": "1.0.0",
+  "description": "Server for RefleX",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0"
+  }
+}
