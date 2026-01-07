@@ -1,0 +1,2 @@
+*.html linguist-vendored
+#client/docs/*.html linguist-generated=true
