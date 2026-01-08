@@ -19,8 +19,17 @@ const API_KEY = process.env.GROQ_API_KEY;
  */
 const MODEL = 'llama-3.1-8b-instant'; //old unsupported model: 'llama3-70b-8192';
 
+/**
+ * Allowed origins for CORS.
+ * Retrieved from environment variables as a comma-separated string.
+ * Defaults to 'http://localhost:3000'.
+ * @constant {string[]}
+ */
+const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000').split(',');
+
 module.exports = {
     PORT,
     API_KEY,
-    MODEL
+    MODEL,
+    ALLOWED_ORIGINS
 };
