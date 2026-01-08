@@ -272,6 +272,13 @@ int main(int argc, char *argv[]) {
 
                 int err_len = snprintf(NULL, 0, "Exit Code: %d\nStderr: %s\nStdout: %s", exit_code, stderr_output ? stderr_output : "", stdout_output ? stdout_output : "");
                 char *error_log = malloc(err_len + 1);
+                if (!error_log) {
+                    log_msg("Failed to allocate memory for error log.");
+                    // Handle memory allocation failure, e.g., by breaking the loop
+                    if(stdout_output) free(stdout_output);
+                    if(stderr_output) free(stderr_output);
+                    break;
+                }
                 snprintf(error_log, err_len + 1, "Exit Code: %d\nStderr: %s\nStdout: %s", exit_code, stderr_output ? stderr_output : "", stdout_output ? stdout_output : "");
 
                 cJSON *fix_req = cJSON_CreateObject();
