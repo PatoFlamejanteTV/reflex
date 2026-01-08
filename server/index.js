@@ -1,5 +1,5 @@
 const http = require('http');
-const { PORT } = require('./config');
+const { PORT, ALLOWED_ORIGINS } = require('./config');
 const handleGen = require('./routes/gen');
 const handleFix = require('./routes/fix');
 
@@ -10,10 +10,19 @@ const handleFix = require('./routes/fix');
  * @param {http.ServerResponse} res - The HTTP response object.
  */
 const server = http.createServer(async (req, res) => {
+    // Security headers
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'DENY');
+    res.setHeader('Content-Security-Policy', "default-src 'none'");
+    res.setHeader('Referrer-Policy', 'no-referrer');
+
     // CORS headers
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    const origin = req.headers.origin;
+    if (origin && ALLOWED_ORIGINS.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+        res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    }
 
     if (req.method === 'OPTIONS') {
         res.writeHead(204);
