@@ -9,7 +9,7 @@ run-client:
 	bash client.sh
 
 run-server:
-	./server.sh
+	bash server.sh
 
 clean:
 	rm -rf dist build client.dist client.build
