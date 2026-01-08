@@ -12,7 +12,8 @@ run-server:
 	./server.sh
 
 clean:
-	rm -rf dist build client.dist client.build *.onefile-build
+	rm -rf dist build client.dist client.build
+	find . -type d -name "*.onefile-build" -exec rm -rf {} +
 	find . -type d -name "__pycache__" -exec rm -rf {} +
 	find . -type d -name ".pytest_cache" -exec rm -rf {} +
 
