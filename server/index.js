@@ -13,7 +13,7 @@ const server = http.createServer(async (req, res) => {
     // Security headers
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('X-Frame-Options', 'DENY');
-    res.setHeader('Content-Security-Policy', "default-src 'none'");
+    res.setHeader('Content-Security-Policy', "default-src 'self'; object-src 'none'; frame-ancestors 'none';");
     res.setHeader('Referrer-Policy', 'no-referrer');
 
     // CORS headers
