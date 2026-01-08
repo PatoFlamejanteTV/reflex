@@ -6,7 +6,7 @@ build-client:
 	$(PYTHON) -m nuitka --standalone --onefile --lto=yes --remove-output --assume-yes-for-downloads --python-flag=-O --output-dir=dist client/client.py
 
 run-client:
-	./client.sh
+	bash client.sh
 
 run-server:
 	./server.sh
