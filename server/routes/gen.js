@@ -7,7 +7,18 @@ async function handleGen(req, res) {
     req.on('end', async () => {
         console.log(`[${new Date().toISOString()}] /gen received body length: ${body.length}`);
         try {
-            const { master_prompt, obfuscate } = JSON.parse(body);
+            let payload;
+            try {
+              payload = JSON.parse(body);
+            } catch (e) {
+              if (e instanceof SyntaxError) {
+                res.writeHead(400);
+                res.end('Invalid JSON');
+                return;
+              }
+              throw e;
+            }
+            const { master_prompt, obfuscate } = payload;
             console.log(`[${new Date().toISOString()}] MASTER_PROMPT: ${master_prompt}, Obfuscate: ${!!obfuscate}`);
             if (!master_prompt) {
                 console.error("Missing master_prompt");
