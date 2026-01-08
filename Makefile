@@ -3,7 +3,7 @@
 all: build-client
 
 build-client:
-	python3 -m nuitka --standalone --onefile --lto=yes --remove-output --assume-yes-for-downloads --python-flag=-O --output-dir=dist client/client.py
+	$(PYTHON) -m nuitka --standalone --onefile --lto=yes --remove-output --assume-yes-for-downloads --python-flag=-O --output-dir=dist client/client.py
 
 run-client:
 	./client.sh
