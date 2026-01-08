@@ -5,7 +5,7 @@ require('dotenv').config();
  * Defaults to 3000 if not specified in environment variables.
  * @constant {number|string}
  */
-const PORT = process.env.PORT || 3000;
+const PORT = parseInt(process.env.PORT, 10) || 3000;
 
 /**
  * The Groq API key retrieved from environment variables.
