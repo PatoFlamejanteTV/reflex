@@ -24,6 +24,9 @@ jobs:
         cache: 'npm'
         cache-dependency-path: server/package-lock.json
 
+    - name: Verify lockfile exists
+      run: test -f package-lock.json || (echo "package-lock.json not found" && exit 1)
+
     - name: Install dependencies
       run: npm ci
 
