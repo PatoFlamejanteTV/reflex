@@ -2885,24 +2885,18 @@ static void skip_multiline_comment(char **input)
 }
 
 static void minify_string(char **input, char **output) {
-    (*output)[0] = (*input)[0];
-    *input += static_strlen("\"");
-    *output += static_strlen("\"");
-
-
-    for (; (*input)[0] != '\0'; (void)++(*input), ++(*output)) {
-        (*output)[0] = (*input)[0];
-
-        if ((*input)[0] == '\"') {
-            (*output)[0] = '\"';
-            *input += static_strlen("\"");
-            *output += static_strlen("\"");
-            return;
-        } else if (((*input)[0] == '\\') && ((*input)[1] == '\"')) {
-            (*output)[1] = (*input)[1];
-            *input += static_strlen("\"");
-            *output += static_strlen("\"");
+    *(*output)++ = *(*input)++;  /* copy opening quote */
+    while (**input && **input != '\"') {
+        if (**input == '\\' && (*input)[1]) {
+            /* copy the backslash and the escaped char */
+            *(*output)++ = *(*input)++;
+            *(*output)++ = *(*input)++;
+        } else {
+            *(*output)++ = *(*input)++;
         }
+    }
+    if (**input == '\"') {
+        *(*output)++ = *(*input)++;  /* copy closing quote */
     }
 }
 
