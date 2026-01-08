@@ -158,17 +158,35 @@ int run_payload(const char *code, char **stdout_out, char **stderr_out) {
     fprintf(f, "%s", code);
     fclose(f);
 
-    int ret = system("python3 payload_temp.py > stdout.txt 2> stderr.txt");
-    // system returns status in waitpid format. We want exit code.
-    int exit_code = 0;
-    if (ret == -1) {
-        exit_code = -1;
-    } else {
-        if (WIFEXITED(ret)) {
-            exit_code = WEXITSTATUS(ret);
-        } else {
-            exit_code = ret; // Should handle signals but simple enough
+    pid_t pid = fork();
+    if (pid == -1) {
+        log_msg("Failed to fork");
+        return -1;
+    } else if (pid == 0) {
+        // Child process
+        int stdout_fd = open("stdout.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+        int stderr_fd = open("stderr.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+        if (stdout_fd < 0 || stderr_fd < 0) {
+            exit(127);
         }
+        dup2(stdout_fd, STDOUT_FILENO);
+        dup2(stderr_fd, STDERR_FILENO);
+        close(stdout_fd);
+        close(stderr_fd);
+
+        char *const argv[] = {"python3", "payload_temp.py", NULL};
+        execvp("python3", argv);
+        // execvp only returns on error
+        exit(127);
+    }
+
+    // Parent process
+    int status;
+    waitpid(pid, &status, 0);
+
+    int exit_code = -1;
+    if (WIFEXITED(status)) {
+        exit_code = WEXITSTATUS(status);
     }
 
     *stdout_out = read_file("stdout.txt");
